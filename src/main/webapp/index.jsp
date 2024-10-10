@@ -8,6 +8,6 @@
 </head>
 <body>
 <%-- <%response.sendRedirect("admin/showFormAddNewUser"); %> --%>
-<%response.sendRedirect("http://localhost:8080/WebCharity_demo001/admin/donations"); %>
+<%response.sendRedirect("http://localhost:8080/WebCharity_demo001/home"); %>
 </body>
 </html>

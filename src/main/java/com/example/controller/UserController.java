@@ -300,12 +300,22 @@ public class UserController {
 	 */
 	@PostMapping("/updateUser")
 	public String updateUser(@Valid @ModelAttribute("user") UserEntity user, BindingResult result, 
-			Model theModel,HttpSession session) {
+				@RequestParam(name="roleId", required = false) Integer roleId ,Model theModel,HttpSession session) {
 			
+		if(roleId != null) {
+			RoleEntity role = roleService.findById(roleId);
+			user.setRoleEntity(role);
+		}
+		
 
 		if (result.hasErrors()) {
 			List<RoleEntity> roles = roleService.findAll();
 			theModel.addAttribute("roles", roles);
+			
+			for(Object i : result.getAllErrors()) {
+				System.out.println(i.toString());
+			}
+			
 			return "admin/user/edit";
 		}
 

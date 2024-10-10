@@ -133,7 +133,14 @@
 
 					<form:input type="hidden" path="id" value="${user.id}" />
 					<form:input type="hidden" path="created" value="${user.created}" />
-					<%-- <form:input type="hidden" path="usersDonation" value="${user.usersDonation}"/> --%>
+					<%-- <form:input type="hidden" path="usersDonation" value="${user.usersDonation}"/> 
+					jsp không thể truyền nguyên 1 list<UserDonation> đi được dù đã set featch là eache--%> 
+
+					<c:if test="${userEdit}">
+						<input type="hidden" value="${user.roleEntity.id}" name="roleId"/>
+						<form:input type="hidden" path="note" value="${user.note}" />	
+					</c:if>
+
 
 					<div class="container-fluid px-4">
 						<div class="card mb-4">
@@ -208,7 +215,7 @@
 									<div class="form-group row mb-4">
 										<label class="col-sm-4 col-form-label">Mật Khẩu:</label>
 										<div class="col-sm-8">
-											<form:input type="password" path="password"
+											<form:input type="text" path="password"
 												placeholder="Ít nhất 6 ký tự" class="form-control" />
 											<div class="mt-3">
 												<form:errors path="password"
@@ -220,7 +227,6 @@
 									<div class="form-group row mb-4">
 										<label class="col-sm-4 col-form-label">Vai Trò:</label>
 										<div class="col-sm-8">
-											<form:input type="hidden" path="role" value="${user.role}" />
 											<input class="form-control" value="USER" readonly="readonly">
 										</div>
 									</div>
@@ -266,8 +272,7 @@
 											<form:select id="roleEntity" name="roleEntity"
 												path="roleEntity" class="form-control">
 												<%--  <form:option path="role" value="${user.roleEntity.roleName}" /> --%>
-												<form:options items="${roles}" itemValue="id"
-													itemLabel="roleName" />
+												<form:options items="${roles}" itemValue="id" itemLabel="roleName" />
 											</form:select>
 										</div>
 										<div class="mt-3">
@@ -299,6 +304,7 @@
 										<div class="col-sm-8">
 											<form:input type="text" path="note" class="form-control"
 												style="height: 100px;" size="1000" />
+											
 										</div>
 									</div>
 
@@ -320,7 +326,7 @@
 
 									<c:if test="${sessionScope.user != null}">
 										<a
-											href="${pageContext.request.contextPath}/user/info/' +${user.id}}"><button
+											href="${pageContext.request.contextPath}/user/info/${user.id}"><button
 												type="button" style="width: 80px"
 												class="btn btn-secondary m-2">Cancel</button></a>
 									</c:if>

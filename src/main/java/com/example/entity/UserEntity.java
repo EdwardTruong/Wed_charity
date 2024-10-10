@@ -70,7 +70,6 @@ public class UserEntity {
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	@JoinColumn(name = "role_id")
-	@NotNull(message = "Cần có chức vụ")
 	private RoleEntity roleEntity;
 
 	@OneToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, mappedBy = "user")

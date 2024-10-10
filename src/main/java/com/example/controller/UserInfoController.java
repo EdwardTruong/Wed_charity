@@ -1,6 +1,8 @@
 package com.example.controller;
 
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +15,7 @@ import com.example.exception.UserNotFoundException;
 import com.example.service.UserService;
 import com.example.util.AppUtils;
 
-import jakarta.servlet.http.HttpSession;
+
 
 /*
  * In this project users can find their own information and change some their fields information.
@@ -71,6 +73,9 @@ public class UserInfoController {
 		}
 			
 			session.setAttribute("user", entity);
+			session.setAttribute("userEdit", true);
+			theModel.addAttribute("userEdit", true); // đang fix
+		
 			theModel.addAttribute("user",entity);
 			theModel.addAttribute("user_created", utils.changeDateFormatDMY(entity.getCreated()));
 			theModel.addAttribute("pageTitle", "Thông tin người dùng : " + entity.getFullName());
