@@ -83,7 +83,7 @@ When you access any recommendation for more details.
 
 
 When you click on the donate button, a pop-up will appear.
-[Main Page (1).pdf](https://github.com/user-attachments/files/17506900/Main.Page.1.pdf)
+[Main Page (1).pdf](https://github.com/user-attachments/files/17506900)
 
 
 
