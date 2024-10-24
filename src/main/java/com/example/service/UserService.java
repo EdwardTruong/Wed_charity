@@ -9,7 +9,7 @@ import com.example.entity.UserEntity;
 
 public interface UserService {
 	
-	List<UserEntity> findAll(int pageNo, int pageSize);
+	List<UserDto> findAll(int pageNo, int pageSize);
 
 	UserEntity findById(Integer id);
 	

@@ -201,7 +201,7 @@ public class HomeController {
 	
 	@PostMapping("/saveUserDonation")
 	public String saveNewUserDonation(@Valid @ModelAttribute("newUserDonation") UserDonationDto dto,
-			BindingResult bindingResult, Model theModel, RedirectAttributes redirectAttributes, HttpSession session) {
+			BindingResult bindingResult, Model theModel, HttpSession session) {
 
 		Donation donation = dService.findById(dto.getDonationId());
 
@@ -217,7 +217,7 @@ public class HomeController {
 		}
 
 		if (curentUser.getStatus() == 0) {
-			redirectAttributes.addFlashAttribute("error",
+			session.setAttribute("error",
 					"Trạng thái người dùng đã bị khóa không thể quyên góp. Liên hệ với admin để thay đổi trạng thái hoạt động .");
 
 			if (isHomePage == true) {
@@ -228,7 +228,7 @@ public class HomeController {
 
 
 		if (AppUtils.allUserDonatedInDatabase >= 10) {
-			redirectAttributes.addFlashAttribute("error",
+			session.setAttribute("error",
 					"Số nhà hảo tâm đã quyên góp đạt tối đa cho toàn bộ website : 10. Làm ơn hãy đợi admin "
 							+ "cập nhật để quyên góp.");
 
@@ -307,7 +307,7 @@ public class HomeController {
 		udEntity.setUser(curentUser);
 		uDService.update(udEntity);
 
-		redirectAttributes.addFlashAttribute("success", "Đã quyên góp vào " + donation.getName() + " số tiền "
+		session.setAttribute("success", "Đã quyên góp vào " + donation.getName() + " số tiền "
 				+ utils.convertToVND(Long.parseLong(dto.getMoney())) + "." + " Đợi ADMIN xác nhận.");
 
 		if (isHomePage == true) {

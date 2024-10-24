@@ -40,7 +40,7 @@ public class DonationDaoImpl implements DonationDao {
 		    String queryString 	= "SELECT d FROM Donation d WHERE CONCAT(d.code,' ', d.phoneNumber, ' ', d.organizationName, ' ') "
 		    		+ "LIKE :input";// query using in JpaRepository will woking
 		    Query query = session.createQuery(queryString);
-		    query.setParameter("input", "%" + input + "%"); // set value param with "%" to find depend on input
+		    query.setParameter("input", "%" + input + "%"); 
 		    query.setFirstResult((pageNo-1)*pageSize);
 			query.setMaxResults(pageSize);
 		    List<Donation> donations = query.list();

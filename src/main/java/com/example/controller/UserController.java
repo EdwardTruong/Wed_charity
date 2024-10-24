@@ -169,7 +169,7 @@ public class UserController {
 			lastObjectOnPage = totalItems;
 		}
 
-		List<UserEntity> userEntities = userService.findAll(pageNo, pageSize);
+		List<UserDto> userEntities = userService.findAll(pageNo, pageSize);
 
 			theModel.addAttribute("newUser", new UserDto());
 			theModel.addAttribute("page", true);

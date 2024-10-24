@@ -38,7 +38,7 @@ public class UserMapper {
 		dto.setStatus(entity.getStatus());
 		dto.setUserName(entity.getUserName());
 		dto.setCreated(entity.getCreated());
-//		dto.setRoleEntity(entity.getRoleEntity());
+		dto.setIdRole(entity.getRoleEntity().getId());
 		dto.setRoleId(roleId);
 
 		return dto;

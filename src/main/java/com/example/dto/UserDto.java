@@ -41,10 +41,12 @@ public class UserDto {
 	
 	@NotBlank(message = "Yêu cầu cần có chức danh !")
 	private String roleId;
+	
+	private int idRole;
 
 	public UserDto(int id, @Size(min = 1, max = 100, message = "Nhập địa chỉ") String address, String email,
 			String fullName, String password, String phoneNumber, String userName, RoleEntity role, String roleId, int status,
-			String created) {
+			String created,int idRole) {
 		this.id = id;
 		this.address = address;
 		this.email = email;
@@ -56,6 +58,7 @@ public class UserDto {
 		this.created = created;
 		this.roleEntity = role;
 		this.roleId = roleId;
+		this.idRole =idRole;
 	}
 
 	public UserDto() {
@@ -148,6 +151,14 @@ public class UserDto {
 
 	public void setRoleId(String roleId) {
 		this.roleId = roleId;
+	}
+
+	public int getIdRole() {
+		return idRole;
+	}
+
+	public void setIdRole(int idRole) {
+		this.idRole = idRole;
 	}
 
 }

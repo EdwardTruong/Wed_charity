@@ -175,11 +175,14 @@
 
 		<section class="site-section">
 			<div class="container">
+			
 				<c:if test="${sessionScope.success != null}">
 					<div class="alert alert-success text-center">${success}</div>
-					<c:remove var="error" scope="session" />
+					<c:remove var="success" scope="session" />
 				</c:if>
-				<c:if test="${sessionScope.success != null}">
+				
+				
+				<c:if test="${sessionScope.error != null}">
 					<div class="alert alert-warning text-center">${error}</div>
 					<c:remove var="error" scope="session" />
 				</c:if>

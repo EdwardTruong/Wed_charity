@@ -47,9 +47,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<UserEntity> findAll(int pageNo, int pageSize) {
+	public List<UserDto> findAll(int pageNo, int pageSize) {
 		
-		return (List<UserEntity>)userDao.listUsers(pageNo, pageSize);
+		 List<UserEntity> listUser = userDao.listUsers(pageNo, pageSize);
+		 return userMapper.toListDto(listUser);
 	}
 	
 	@Override

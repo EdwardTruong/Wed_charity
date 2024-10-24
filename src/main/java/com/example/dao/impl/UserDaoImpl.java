@@ -76,12 +76,11 @@ public class UserDaoImpl implements UserDao{
 		    return user;
 	}
 
+//	String queryStringUsingLike = "FROM UserEntity u WHERE u.email = :input OR u.phoneNumber = :input";
 	@Override
 	public List<UserEntity> searchingFindUserByEmailOrPhoneNumber(String input, int pageNo, int pageSize) {
 		 Session session = sessionFactory.getCurrentSession();
-		    String queryStringUsingLike = "FROM UserEntity u WHERE u.email = :input OR u.phoneNumber = :input";
-		    String queryString = "SELECT u FROM UserEntity u WHERE u.email LIKE CONCAT('%', :input, '%') OR u.phoneNumber LIKE CONCAT('%', :input, '%')";
-		    
+		    String queryString = "SELECT u FROM UserEntity u WHERE u.email LIKE CONCAT('%', :input, '%') OR u.phoneNumber LIKE CONCAT('%', :input, '%')";		    
 		    Query query = session.createQuery(queryString);
 		    query.setParameter("input", input);
 		    query.setFirstResult((pageNo-1)*pageSize);

@@ -195,40 +195,44 @@
 											<td>${user.email}</td>
 											<td>${user.phoneNumber}</td>
 											<td>${user.userName}</td>
+											
 
-										<c:if test="${sessionScope.input == null}">
+										 <c:if test="${sessionScope.searching == null}">	
 											<c:choose>
-												<c:when test="${user.roleEntity.id == 1}">
+												<c:when test="${user.roleEntity.id == '1'}">
 													<td>ADMIN</td>
 												</c:when>
-												<c:when test="${user.roleEntity.id == 2}">
+												<c:when test="${user.roleEntity.id == '2'}">
 													<td>USER</td>
 												</c:when>
 											</c:choose>
-											
-										</c:if>
+											<c:remove var="searching" scope="session"/>
+										</c:if> 	
+									
 										
-										<c:if test="${sessionScope.input != null}">
+										<c:if test="${sessionScope.searching != null || sessionScope.searching != ''}">
 											<c:choose>
 												<c:when test="${user.roleId == '1'}">
 													<td>ADMIN</td>
 												</c:when>
-												<c:when test="${user.roleId == '2'}">
+												<c:when test="${user.roleId eq '2'}">
 													<td>USER</td>
 												</c:when>
 											</c:choose>
 											
-										    <c:remove var="input" scope="session"/>
+										    <c:remove var="searching" scope="session"/>
 										</c:if>
 
-											<c:choose>
-												<c:when test="${user.status eq '0'}">
-													<td>Khóa</td>
-												</c:when>
-												<c:when test="${user.status eq '1'}">
-													<td>Hoạt động</td>
-												</c:when>
-											</c:choose>
+										<c:if test="${user.roleEntity.id != 1 || user.roleId != '1'}">
+												<c:choose>
+													<c:when test="${user.status eq '0'}">
+														<td>Khóa</td>
+													</c:when>
+													<c:when test="${user.status eq '1'}">
+														<td>Hoạt động</td>
+													</c:when>
+												</c:choose>
+											</c:if>
 											<td style="width: 370px;">
 												<div class="d-flex">
 													<a
