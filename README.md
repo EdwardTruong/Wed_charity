@@ -96,5 +96,6 @@ You can see it when go to page number 2!
 [Main Page (1).pdf](https://github.com/user-attachments/files/17507084/Main.Page.1.pdf)
 
 
-And This is admin login : 
 
+This is admin login and manage entity :   
+![Main Page](https://github.com/user-attachments/assets/c7e3e934-3874-431e-9606-3f3eb3aba05c)
