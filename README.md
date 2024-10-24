@@ -62,10 +62,39 @@ This project does not use Spring Security, so it will use HttpSession to manage 
 Apart from the project using Spring Core along with Hibernate and JSP, I also have a similar project using Spring Boot and Thymeleaf with similar features, but without writing too much under the Repository layer.
 
 
-
 ## 🛠 Skills
 
 Front-end : JSP
 
 Back-end : HttpSession, pagination with query
+
+
+
+## Main project
+
+This is Home page without login and when login success.
+[Main Page (1).pdf](https://github.com/user-attachments/files/17506758/Main.Page.1.pdf)
+
+
+
+When you access any recommendation for more details.
+[Main Page (1).pdf](https://github.com/user-attachments/files/17506803/Main.Page.1.pdf)
+
+
+
+When you click on the donate button, a pop-up will appear.
+[Main Page (1).pdf](https://github.com/user-attachments/files/17506900/Main.Page.1.pdf)
+
+
+
+When you have successfully supported from the home page or detail page, a notification will appear within the donation detail page you have supported.
+[Main Page (1).pdf](https://github.com/user-attachments/files/17506980/Main.Page.1.pdf)
+
+
+
+You can see it when go to page number 2!
+[Main Page (1).pdf](https://github.com/user-attachments/files/17507084/Main.Page.1.pdf)
+
+
+And This is admin login : 
 
