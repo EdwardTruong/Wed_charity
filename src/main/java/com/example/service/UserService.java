@@ -33,8 +33,4 @@ public interface UserService {
 
 	long totalUserFound(String input);
 
-
-	
-//	Page<UserDto> findUserByInfo(int pageNo, int pageSize, String input);
-//	Page<UserDto> findAll(int pageNo , int pageSize);	
 }

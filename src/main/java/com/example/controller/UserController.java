@@ -105,7 +105,8 @@ public class UserController {
 	 * The lines was commented in method to skip checking user role and it's easy to check logic.
 	 */
 	@GetMapping("/find/{pageNo}")
-	public String findUser(@PathVariable(name="pageNo")int pageNo,@RequestParam(name = "searching")String searching, Model theModel, HttpSession session) {
+	public String findUser(@PathVariable(name="pageNo")int pageNo,
+			@RequestParam(name = "searching")String searching, Model theModel, HttpSession session) {
 		
 //		UserEntity user = (UserEntity) session.getAttribute("user");
 //		UserEntity admin = (UserEntity) session.getAttribute("admin");

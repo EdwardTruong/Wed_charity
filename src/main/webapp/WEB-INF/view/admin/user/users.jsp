@@ -220,7 +220,8 @@
 												</c:when>
 											</c:choose>
 											
-										    <c:remove var="searching" scope="session"/>
+										    <%-- <c:remove var="searching" scope="session"/> --%>
+										   <%-- turn off it because the value of searching be removed when next page --%>
 										</c:if>
 
 										<c:if test="${user.roleEntity.id != 1 || user.roleId != '1'}">
@@ -318,6 +319,13 @@
 						</div>
 					</div>
 				</div>
+<c:if test="${sessionScope.searching == true}">
+
+	<p>Ông nội mày</p>
+</c:if>
+
+
+
 
 				<!-- Pagination -->
 				<c:if test="${page == true}">
@@ -390,10 +398,15 @@
 														<c:if test="${!founder}">
 															<a href="<c:url value='/admin/pageUser/'/>${currentUserPage + 1}" class="next">Next</a>
 														</c:if>
+					
+					
+					
+					
+					
 													</c:when>
-													<c:otherwise>
 													
-													</c:otherwise>
+													
+												
 													
 												</c:choose>
 											</div>

@@ -77,13 +77,13 @@
 </head>
 <body id="top">
 
-	<!--  	<div id="overlayer"></div>
+	 	<div id="overlayer"></div>
 	<div class="loader">
 		<div class="spinner-border text-primary" role="status">
 			<span class="sr-only">Loading...</span>
 		</div>
 	</div> 
-	 -->
+	 
 	<c:if test="${sessionScope.msg != null}">
 		<div class="toast" data-delay="1000"
 			style="position: fixed; top: 100PX; left: 40PX; z-index: 2000; width: 300px">

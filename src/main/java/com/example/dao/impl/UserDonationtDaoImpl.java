@@ -51,7 +51,7 @@ public class UserDonationtDaoImpl implements UserDonationtDao {
 	@Override
 	public UserDonation update(UserDonation userDonation) { // Using update
 		Session session = sessionFactory.getCurrentSession();
-		session.saveOrUpdate(userDonation);
+		session.merge(userDonation);
 		return userDonation;
 	}
 

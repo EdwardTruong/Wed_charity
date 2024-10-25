@@ -201,11 +201,12 @@
 								<div class="form-group row mb-4">
 									<label class="col-sm-4 col-form-label">User-Name:</label>
 									<div class="col-sm-8">
-										<form:input type="text" path="userName" class="form-control"
-											readonly="readonly" placeholder="Từ 6 đến 20 ký tự" />
+										<form:input type="hidden" path="userName"
+												value="${user.userName}" />
+											<input class="form-control" value="${user.userName}"
+												readonly="readonly"> 
 										<div class="mt-3">
-											<form:errors path="userName" class="alert alert-warning ml-3"
-												style="width: 93%;" />
+											
 										</div>
 									</div>
 								</div>
@@ -256,7 +257,7 @@
 
 
 								<c:if test="${sessionScope.admin != null}">
-									<div class="form-group row mb-4">
+									<%-- <div class="form-group row mb-4">
 										<label class="col-sm-4 col-form-label">Mật Khẩu :</label>
 										<div class="col-sm-8">
 											<form:input type="hidden" path="password"
@@ -265,7 +266,7 @@
 												readonly="readonly">
 										</div>
 									</div>
-
+ --%>
 									<div class="form-group row mb-4">
 										<label class="col-sm-4 col-form-label">Vai Trò:</label>
 										<div class="col-sm-8">

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import com.example.dto.DonationDto;
 import com.example.dto.UserDonationDto;
@@ -195,7 +195,7 @@ public class DonationController {
 	 */
 	@PostMapping("/addNewDonation")
 	public String addNewDonation(@Valid @ModelAttribute("newDonation") DonationDto donationDto,
-			BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes, HttpSession session) {
+			BindingResult bindingResult, Model model, HttpSession session) {
 
 		if (bindingResult.hasErrors()) {
 			return "admin/donation/new";
@@ -212,7 +212,7 @@ public class DonationController {
 		}
 
 		dService.saveNew(donationDto);
-		redirectAttributes.addFlashAttribute("message", "Thêm mới đợi quyên góp thành công.");
+		session.setAttribute("message", "Thêm mới đợi quyên góp thành công.");
 		return "redirect:/admin/donations";
 	}
 

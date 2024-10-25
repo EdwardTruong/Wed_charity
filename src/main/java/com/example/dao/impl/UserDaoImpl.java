@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.dao.UserDao;
+import com.example.dto.UserDto;
 import com.example.entity.UserEntity;
 
 
@@ -48,7 +49,7 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public void delete(int id) {
 		Session session =  sessionFactory.getCurrentSession();
-		String queryString = "DELETE UserEntity WHERE id= :id";
+		String queryString = "DELETE UserEntity u WHERE u.id= :id";
 		Query query = session.createQuery(queryString);
 		query.setParameter("id", id);
 		query.executeUpdate();
@@ -76,12 +77,14 @@ public class UserDaoImpl implements UserDao{
 		    return user;
 	}
 
-//	String queryStringUsingLike = "FROM UserEntity u WHERE u.email = :input OR u.phoneNumber = :input";
+//	String queryString = "SELECT u.id, u.fullName, u.email, u.phoneNumber, u.userName, u.roleEntity, u.status, "
+//			+ "FROM UserEntity u WHERE u.email LIKE CONCAT('%', :input, '%') OR u.phoneNumber LIKE CONCAT('%', :input, '%')";
 	@Override
 	public List<UserEntity> searchingFindUserByEmailOrPhoneNumber(String input, int pageNo, int pageSize) {
 		 Session session = sessionFactory.getCurrentSession();
 		    String queryString = "SELECT u FROM UserEntity u WHERE u.email LIKE CONCAT('%', :input, '%') OR u.phoneNumber LIKE CONCAT('%', :input, '%')";		    
-		    Query query = session.createQuery(queryString);
+		 
+		 Query query = session.createQuery(queryString);
 		    query.setParameter("input", input);
 		    query.setFirstResult((pageNo-1)*pageSize);
 			query.setMaxResults(pageSize);
@@ -89,6 +92,7 @@ public class UserDaoImpl implements UserDao{
 		    return users;
 	}
 
+	
 
 	@Override
 	public List<UserEntity> listUsers(int pageNo, int pageSize) {

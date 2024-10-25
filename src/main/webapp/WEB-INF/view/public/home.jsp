@@ -145,10 +145,11 @@
 			</div>
 		</section>
 
+		
 		<c:if test="${sessionScope.success != null}">
-			<p style="color: red">${sessionScope.success}</p>
-		    <c:remove var="error" scope="session"/>
-		</c:if>
+					<div class="alert alert-success text-center">${success}</div>
+					<c:remove var="success" scope="session" />
+				</c:if>
 
 		<c:if test="${sessionScope.error != null}">
 			<p style="color: red">${sessionScope.error}</p>

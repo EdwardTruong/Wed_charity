@@ -18,6 +18,7 @@ import com.example.service.RoleService;
 import com.example.service.UserDonationService;
 import com.example.service.UserService;
 import com.example.util.AppUtils;
+import com.example.util.Conts;
 
 
 
@@ -67,8 +68,13 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void deleteUserById(UserEntity user, Set<UserDonation> usersDonated) {
 		for(UserDonation i : usersDonated) {
-			i.getUser().setId(1);
-			uDService.update(i);
+			
+			if(i.getStatus()==Conts.STAUS.ACTIVE) {
+				i.getUser().setId(1);
+				uDService.update(i);	
+			}else {
+				uDService.delete(i);
+			}
 		}
 		
 		userDao.delete(user.getId());

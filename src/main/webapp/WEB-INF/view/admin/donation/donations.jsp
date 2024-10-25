@@ -126,7 +126,7 @@
 						
 						<c:if test="${sessionScope.message != null}">
 								<div   class="alert alert-success text-center" >${sessionScope.message}</div>
-							    <c:remove var="error" scope="session"/>
+							    <c:remove var="message" scope="session"/>
 							</c:if>
 						
 						<c:if test="${sessionScope.error != null}">
@@ -238,7 +238,8 @@
 									</c:if>
 									<c:if test="${sessionScope.searching != null}">
 										<input type="text" name="searching" class="form-control float-right" value="${searching}" placeholder="Mã - SĐT - Tổ Chức - Trạng thái" /><!-- th:value="${input}" -->
-									    <c:remove var="input" scope="session"/>
+									 <%-- <c:remove var="searching" scope="session"/> --%>
+										   <%-- turn off it because the value of searching be removed when next page --%>
 									</c:if>
 					
 										<div class="input-group-append">

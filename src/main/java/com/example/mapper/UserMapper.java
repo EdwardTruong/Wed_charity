@@ -48,8 +48,5 @@ public class UserMapper {
 		return listEntity.stream().map(entity -> toDto(entity)).toList();
 	}
 
-//	public Page<UserDto> toListDto(Page<User> listUsers) {
-//		return listUsers.map(this::toDto);
-//	}
 
 }
