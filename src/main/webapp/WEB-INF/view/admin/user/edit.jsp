@@ -241,12 +241,12 @@
 												value="${user.status}" />
 											<c:choose>
 												<c:when test="${user.status == 1}">
-													<span class="form-control" readonly="readonly">HOẠT
-														ĐÔNG</span>
+													<input class="form-control" readonly="readonly" value="HOẠT
+														ĐỘNG">
 												</c:when>
 												<c:when test="${user.status == 0}">
-													<span class="form-control" readonly="readonly">BỊ
-														KHÓA</span>
+													<input class="form-control" readonly="readonly" value="BỊ KHÓA">
+														
 												</c:when>
 											</c:choose>
 										</div>
@@ -255,24 +255,36 @@
 								</c:if>
 								<!-- User -->
 
-
+									
+									
+								<!-- Only admin can see -->	
 								<c:if test="${sessionScope.admin != null}">
-									<%-- <div class="form-group row mb-4">
+								
+									<!-- admin edit themsefl -->
+									<c:if test="${sessionScope.adminEditSefl != null}">
+									 <div class="form-group row mb-4">
 										<label class="col-sm-4 col-form-label">Mật Khẩu :</label>
 										<div class="col-sm-8">
 											<form:input type="hidden" path="password"
 												value="${user.password}" />
-											<input class="form-control" value="${user.password}"
-												readonly="readonly">
+											<input class="form-control" value="${user.password}" >
 										</div>
 									</div>
- --%>
+									<c:remove var="adminEditSefl" scope="session"/>
+									</c:if>
+									
+									<!-- admin can't edit password's user -->
+									<c:if test="${sessionScope.adminEditSefl == null}">
+									<form:input type="hidden" path="password" value="${user.password}" />
+									<c:remove var="adminEditSefl" scope="session"/>
+									</c:if>
+									
 									<div class="form-group row mb-4">
 										<label class="col-sm-4 col-form-label">Vai Trò:</label>
 										<div class="col-sm-8">
 											<form:select id="roleEntity" name="roleEntity"
 												path="roleEntity" class="form-control">
-												<%--  <form:option path="role" value="${user.roleEntity.roleName}" /> --%>
+										  <%--  <form:option path="role" value="${user.roleEntity.roleName}" /> --%>
 												<form:options items="${roles}" itemValue="id" itemLabel="roleName" />
 											</form:select>
 										</div>
@@ -305,14 +317,13 @@
 										<div class="col-sm-8">
 											<form:input type="text" path="note" class="form-control"
 												style="height: 100px;" size="1000" />
-											
 										</div>
 									</div>
-
-
-
+									
 								</c:if>
 								<!-- admin  -->
+
+
 
 								<!--3 cái nút cuối trang-->
 								<div class="d-flex justify-content-between align-items-center">
@@ -330,6 +341,7 @@
 											href="${pageContext.request.contextPath}/user/info/${user.id}"><button
 												type="button" style="width: 80px"
 												class="btn btn-secondary m-2">Cancel</button></a>
+									
 									</c:if>
 									<div>
 										<input type="submit" style="width: 80px; height: 37px;"

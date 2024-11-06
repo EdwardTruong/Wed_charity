@@ -31,6 +31,7 @@ import com.example.service.RoleService;
 import com.example.service.UserDonationService;
 import com.example.service.UserService;
 import com.example.util.AppUtils;
+import com.example.util.Conts;
 import com.example.util.RoleEntityEditor;
 
 /*
@@ -87,13 +88,13 @@ public class UserController {
 	public String allUsers(Model theModel, HttpSession session) {
 		util.setUserAdminToTest(session, userService);
 
-//		UserEntity user = (UserEntity) session.getAttribute("user");
-//		UserEntity admin = (UserEntity) session.getAttribute("admin");
-//
-//		if (admin == null && (user == null || user.getRoleEntity().getId() != 1)) {
-//			return "login/access_denied";
-//		}
-//		util.setUserAdminToTest(session, userService);
+		UserEntity user = (UserEntity) session.getAttribute("user");
+		UserEntity admin = (UserEntity) session.getAttribute("admin");
+
+		if (admin == null && (user == null || user.getRoleEntity().getId() != 1)) {
+			return "login/access_denied";
+		}
+		util.setUserAdminToTest(session, userService);
 		
 
 		return pages(theModel, 1,session);
@@ -270,21 +271,17 @@ public class UserController {
 	@GetMapping("/editUser/{id}")
 	public String editUser(@PathVariable("id") Integer userId, Model theModel, HttpSession session) {
 
-//		UserEntity user = (UserEntity) session.getAttribute("user");
-//		UserEntity admin = (UserEntity) session.getAttribute("admin");
-//
-//		if (admin == null && (user == null || user.getRoleEntity().getId() != 1)) {
-//			return "login/access_denied";
-//		}
-//
-//		util.setUserAdminToTest(session, userService);
-
 		UserEntity entity = userService.findById(userId);
 		List<RoleEntity> roles = roleService.findAll();
 		theModel.addAttribute("roles", roles);
 
 		if (entity == null) {
 			throw new UserNotFoundException("User not found");
+		}
+		
+		UserEntity user = (UserEntity)session.getAttribute("admin");
+		if(entity.getRoleEntity().getId() == Conts.ROLE.ID_ADMIN && user.getId() == userId) {
+			session.setAttribute("adminEditSefl", entity);
 		}
 
 		theModel.addAttribute("user", entity);

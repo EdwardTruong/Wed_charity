@@ -193,12 +193,12 @@
 										<div class="col-sm-8">
 											<c:choose>
 												<c:when test="${user.status == 1}">
-													<span class="form-control" readonly="readonly">HOẠT
-														ĐÔNG</span>
+													<input class="form-control" readonly="readonly" value="HOẠT ĐÔNG">
+														
 												</c:when>
 												<c:when test="${user.status == 0}">
-													<span class="form-control" readonly="readonly">BỊ
-														KHÓA</span>
+													<input class="form-control" readonly="readonly" value="BỊ KHÓA">
+														
 												</c:when>
 											</c:choose>
 
